@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "repository": "Albertito-AI/cohortframe",
+  "visibility": "private",
+  "validated_at": "2026-10-28T08:31:03.994764+00:00",
+  "source_extraction": {
+    "source_repository": "Albertito-AI/atlas-agent-school",
+    "source_pull_request": 15,
+    "source_head": "ea4631b9d2a8eaff19e5557b9c65449f06ddbd95",
+    "source_subtree": "projects/cohortframe",
+    "extracted_file_count": 24,
+    "runtime_changed": false
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "setuptools": "84.1.0",
+    "pip_build_frontend": "26.2.2",
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+    "ffprobe": "ffprobe version 6.1.1-3ubuntu5 Copyright (c) 2007-2023 the FFmpeg developers"
+  },
+  "suite": {
+    "tests": 37,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 1.936,
+    "wheel_stage": "exact extracted baseline",
+    "launched_without_pythonpath": true,
+    "recovery_subprocess_note": "An existing recovery test sets PYTHONPATH to this copied test tree's absent src directory. No source code is available there; imports resolve to the installed wheel.",
+    "wheel_sha256": "68e385a9db87076c24cfaa07b26ce785c83477a986ba559a2d3602bce2cde2ec",
+    "test_files": [
+      {
+        "path": "tests/test_cli.py",
+        "sha256": "04e5ea52c8be15d4b84bbcea1acda6f6e284bb53e60dfeea5a6e1ea54ade380f",
+        "unchanged_from_source": true
+      },
+      {
+        "path": "tests/test_core.py",
+        "sha256": "21cb49079b8fa470206f1d005f88139fb5692a631d6879163d5891e03c13f9bf",
+        "unchanged_from_source": true
+      },
+      {
+        "path": "tests/test_render.py",
+        "sha256": "94337e3dc6ddbab045880b68b8ad398f11790bc0e57f4d2a3604203259fa7cc6",
+        "unchanged_from_source": true
+      }
+    ]
+  },
+  "final_package": {
+    "sha256": "8ad5471ce14708a84c3b1c623b722671b3903bbb85e9b4e45d9d859bb0127278",
+    "bytes": 28674,
+    "readme_sha256": "ede9bdde5c8a1e8685889f2df4733411d93e83ae9f0594709106ed036abe0837",
+    "metadata_contains_final_readme": true,
+    "runtime_dependencies": [],
+    "capabilities_and_doctor_smoke_passed": true,
+    "runtime_identity": [
+      {
+        "path": "src/cohortframe/__init__.py",
+        "source_git_blob_sha": "3eaf417b4a9d5bf40566bcac42e634e2b4397cd1",
+        "sha256": "eabe081783afd1e7732b264222bbe9eebb580d4a430e8edb4de97c5e9c620cc8",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      },
+      {
+        "path": "src/cohortframe/__main__.py",
+        "source_git_blob_sha": "8f0c1d5f6315c6afe9c6e9e2833ae445325db731",
+        "sha256": "76fa916e93e0ae1a6c1bb51dcc0bcf289c014e9f760a47165f8a84401ccf41d7",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      },
+      {
+        "path": "src/cohortframe/cli.py",
+        "source_git_blob_sha": "f0ea885718527e0798f931cba72af0822978efc0",
+        "sha256": "17d66d1b99a4aa4d59a0239fc0c08078056505ab22a54e5b59fb20464f5ff211",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      },
+      {
+        "path": "src/cohortframe/core.py",
+        "source_git_blob_sha": "30f9b358b0dfa5225cba9946e15e0f1e5afbf141",
+        "sha256": "463279780cbe3fc466342f448d9cf5c30d9b4d0bb6a723f456ac001972a87218",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      },
+      {
+        "path": "src/cohortframe/font.py",
+        "source_git_blob_sha": "80a3d34a33dda6dc877736f35983fb522364e681",
+        "sha256": "9e6dd54e224492682d4b5d3454bdd8d0b54c6f713ca306d8eaf0dbd89f6f6720",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      },
+      {
+        "path": "src/cohortframe/models.py",
+        "source_git_blob_sha": "141686851db517a73c52d635b9fed59bcfbeda2d",
+        "sha256": "c00d03bdf8a9ede6be297a5bfa0041dd8d6d3930abf0de7b6b039dbecfc0e4ee",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      },
+      {
+        "path": "src/cohortframe/render.py",
+        "source_git_blob_sha": "a13fcc7143dae5cbe9e023c39f617a09376ed033",
+        "sha256": "01f94b8dc961a15951066a18688cac6240f796f99fa6fd6d22247dad35e5de1b",
+        "source_wheel_installed_identical": true,
+        "baseline_wheel_and_installation_identical": true
+      }
+    ],
+    "full_suite_repeated": false,
+    "rationale": "Only release metadata/docs changed after the baseline suite. All seven Python runtime files are byte-identical across upstream source, final wheel, and final installation.",
+    "filename": "cohortframe-0.1.0-py3-none-any.whl"
+  },
+  "demos": [
+    {
+      "orientation": "landscape",
+      "sha256": "c1f3f3b1213be9df91ec6442e08f2405228f3674c2029eb02919a4307b5f9ba5",
+      "bytes": 254513,
+      "video_codec": "h264",
+      "width": 1280,
+      "height": 720,
+      "frame_count": 288,
+      "fps": "24/1",
+      "video_duration": "12.000000",
+      "format_duration": "12.000000",
+      "audio_codec": "aac",
+      "audio_sample_rate": "48000",
+      "audio_channels": 2,
+      "attempts": 1,
+      "repeat_preserved_artifact_and_mtime": true,
+      "selected_frames_visually_reviewed": true,
+      "visual_observation": "Scenes at 1, 5, and 9 seconds are legible, wrap inside the canvas, and show no clipped title or subtitle.",
+      "filename": "cohortframe-0.1.0-demo-landscape.mp4",
+      "selected_frames": [
+        {
+          "seconds": 1,
+          "sha256": "7b33889dc6160ecb0126e306c80d0ec411d988e1fb3f8a5b5f9030cb08b830b4"
+        },
+        {
+          "seconds": 5,
+          "sha256": "203ab112baa2cbf4b9685cc083f374fd4f12c94331d74616efa586e3b778e6aa"
+        },
+        {
+          "seconds": 9,
+          "sha256": "2105959fd2c73e728671551b42b703c9cf97362577729e7b787de13820cbc3b7"
+        }
+      ]
+    },
+    {
+      "orientation": "portrait",
+      "sha256": "bf8d513e17c7704b1ddb88ad3f0d83b4d002490e5cf2c1aa9cb220e87b266800",
+      "bytes": 254150,
+      "video_codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "frame_count": 288,
+      "fps": "24/1",
+      "video_duration": "12.000000",
+      "format_duration": "12.000000",
+      "audio_codec": "aac",
+      "audio_sample_rate": "48000",
+      "audio_channels": 2,
+      "attempts": 1,
+      "repeat_preserved_artifact_and_mtime": true,
+      "selected_frames_visually_reviewed": true,
+      "visual_observation": "Scenes at 1, 5, and 9 seconds are legible, wrap inside the canvas, and show no clipped title or subtitle.",
+      "filename": "cohortframe-0.1.0-demo-portrait.mp4",
+      "selected_frames": [
+        {
+          "seconds": 1,
+          "sha256": "e690e2f38076223461e8fe8cfbb6e3e104d40885d81544862eb7570d29439dbd"
+        },
+        {
+          "seconds": 5,
+          "sha256": "31a524a8a8fdaf3d74d847806ddb81f4aa1bf7464d382f7dc633bae456a37e7f"
+        },
+        {
+          "seconds": 9,
+          "sha256": "ec2f272d78ffc0becfd62b60468163efbd83ce754938e8d1a44f70afacbc4e19"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "filename": "cohortframe-0.1.0-demo-landscape.mp4",
+      "bytes": 254513,
+      "sha256": "c1f3f3b1213be9df91ec6442e08f2405228f3674c2029eb02919a4307b5f9ba5"
+    },
+    {
+      "filename": "cohortframe-0.1.0-demo-portrait.mp4",
+      "bytes": 254150,
+      "sha256": "bf8d513e17c7704b1ddb88ad3f0d83b4d002490e5cf2c1aa9cb220e87b266800"
+    },
+    {
+      "filename": "cohortframe-0.1.0-py3-none-any.whl",
+      "bytes": 28674,
+      "sha256": "8ad5471ce14708a84c3b1c623b722671b3903bbb85e9b4e45d9d859bb0127278"
+    }
+  ],
+  "boundaries": {
+    "provider_calls": 0,
+    "paid_generation": false,
+    "remote_mutations_by_verifier": false,
+    "no_school_core_records_or_root_ci_copied": true,
+    "school_student_qualification_claimed": false,
+    "tested_os": "Linux only",
+    "production_security_certification": false
+  }
+}

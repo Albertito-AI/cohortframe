@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cohortframe"
+version = "0.1.0"
+description = "Agent-operated local video composition with inspectable jobs"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Albert Tan and the CohortFrame contributors"}]
+dependencies = []
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Topic :: Multimedia :: Video"]
+
+[project.scripts]
+cohortframe = "cohortframe.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

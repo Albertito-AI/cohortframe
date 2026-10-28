@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "name": "My first agent video",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "scenes": [
+    {"id": "hello", "title": "HELLO, COHORTFRAME", "subtitle": "A STRUCTURED BRIEF BECOMES A VIDEO.", "duration": 3, "color": "#10253F"},
+    {"id": "next", "title": "READY FOR THE NEXT AGENT", "subtitle": "EDIT. RENDER. INSPECT. CONTINUE.", "duration": 3, "color": "#123E3B"}
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-28",
+  "timezone": "Asia/Singapore",
+  "version": "0.1.0",
+  "interface_version": "1",
+  "environment": {
+    "python": "3.12.14",
+    "os": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers"
+  },
+  "tests": {
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0,
+    "source": "installed wheel with PYTHONPATH removed and working directory outside source"
+  },
+  "wheel": {
+    "filename": "cohortframe-0.1.0-py3-none-any.whl",
+    "sha256": "5151f399da930ca62539ee91a6f4fdbb5451a48a84b6ec44e7658dd9344cf26a"
+  },
+  "demonstrations": [
+    {
+      "orientation": "landscape",
+      "filename": "cohortframe-v0.1-demo.mp4",
+      "receipt": {
+        "audio_codec": "aac",
+        "bytes": 254513,
+        "duration": 12.0,
+        "format": "mp4",
+        "fps": 24,
+        "frame_count": 288,
+        "height": 720,
+        "path": "artifact.mp4",
+        "renderer": "cohortframe-bitmap-v1",
+        "requested_duration": 12.0,
+        "scene_count": 3,
+        "sha256": "c1f3f3b1213be9df91ec6442e08f2405228f3674c2029eb02919a4307b5f9ba5",
+        "validation": "ffprobe: codec, dimensions, frame count, frame rate, duration and audio",
+        "video_codec": "h264",
+        "width": 1280
+      },
+      "repeat_submission": {
+        "same_job": true,
+        "attempts": 1,
+        "artifact_unmodified": true
+      }
+    },
+    {
+      "orientation": "portrait",
+      "filename": "cohortframe-v0.1-portrait.mp4",
+      "receipt": {
+        "audio_codec": "aac",
+        "bytes": 254150,
+        "duration": 12.0,
+        "format": "mp4",
+        "fps": 24,
+        "frame_count": 288,
+        "height": 1280,
+        "path": "artifact.mp4",
+        "renderer": "cohortframe-bitmap-v1",
+        "requested_duration": 12.0,
+        "scene_count": 3,
+        "sha256": "bf8d513e17c7704b1ddb88ad3f0d83b4d002490e5cf2c1aa9cb220e87b266800",
+        "validation": "ffprobe: codec, dimensions, frame count, frame rate, duration and audio",
+        "video_codec": "h264",
+        "width": 720
+      },
+      "repeat_submission": {
+        "same_job": true,
+        "attempts": 1,
+        "artifact_unmodified": true
+      }
+    }
+  ],
+  "scope": "Local alpha validation; not an OS sandbox, security certification, power-loss test, paid-provider integration or live school evaluation."
+}

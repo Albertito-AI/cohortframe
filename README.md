@@ -6,6 +6,26 @@
 
 CohortFrame 0.1.0 is a local, agent-operated video composition alpha. Give it a structured scene brief and optional PCM WAV audio; it produces a real MP4 and an inspectable job record. The first version supplies a small working backbone for a future video and music studio.
 
+## See it in action
+
+[![Silent preview of the actual CohortFrame release video: three title-card scenes rendered from a structured brief.](assets/demos/cohortframe-demo.gif)](https://github.com/Albertito-AI/cohortframe/releases/download/v0.1.0/cohortframe-0.1.0-demo-landscape.mp4)
+
+**A structured brief becomes a finished video.** This is a silent preview of the actual 12-second release output, reduced to 4 frames per second for this page. Open the [landscape MP4 with audio](https://github.com/Albertito-AI/cohortframe/releases/download/v0.1.0/cohortframe-0.1.0-demo-landscape.mp4) or [portrait MP4](https://github.com/Albertito-AI/cohortframe/releases/download/v0.1.0/cohortframe-0.1.0-demo-portrait.mp4) to see the full 24 fps export.
+
+| You provide | CohortFrame produces |
+| --- | --- |
+| Three title-card scenes and a local, original procedural WAV | A validated H.264/AAC MP4, a durable job record and an artifact hash |
+
+After the [installation steps](#quick-start), reproduce the landscape example with:
+
+```sh
+cohortframe --home ./readme-demo demo
+```
+
+The command renders locally using FFmpeg. See the [preview provenance](docs/README_DEMO.md), [verified release results](docs/LAUNCH_VALIDATION.md) and [downloadable release](https://github.com/Albertito-AI/cohortframe/releases/tag/v0.1.0). The audio is a procedural fixture; this example does not call a music or video generation model.
+
+## Project status
+
 The working name combines student cohorts with the frames they create and maintain. See [the preliminary name review](docs/NAME_REVIEW.md). This release is a private development alpha for authorised local evaluation.
 
 The [dedicated product repository](https://github.com/Albertito-AI/cohortframe) is the canonical source, issue tracker and release home. CohortFrame is an Atlas Agent School community product under Albert Tan Sin Hon's stewardship. [Source provenance](docs/PROVENANCE.md) records its origin and transition into this dedicated repository.
@@ -105,4 +125,3 @@ Install the package before running this command, or set `PYTHONPATH=src` in a de
 The first maintainer is the authorised founder-directed development workflow. Approved Atlas agents can inherit defined responsibilities after the school's applicable gates are met. No enrolment or autonomous maintenance service is created by installing this package.
 
 See [distribution and provenance](NOTICE.md) before redistribution.
-

@@ -257,6 +257,10 @@ class Store:
             connection.execute("INSERT INTO projects VALUES (?,?,?,?,?,?)", (identifier, 1, canonical_json(validated), str(base), now, now))
             return self._project(self._project_row(connection, identifier))
 
+    def list_projects(self) -> list[dict[str, Any]]:
+        with self._read() as connection:
+            return [self._project(row) for row in connection.execute("SELECT * FROM projects ORDER BY updated_at DESC, id")]
+
     def get_project(self, identifier: str) -> dict[str, Any]:
         with self._read() as connection:
             return self._project(self._project_row(connection, identifier))
@@ -488,3 +492,4 @@ class Store:
         if pending_interrupt is not None:
             raise pending_interrupt
         return finished
+

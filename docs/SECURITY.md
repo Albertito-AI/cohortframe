@@ -2,7 +2,7 @@
 
 ## Current boundary
 
-CohortFrame 0.1 is a local development alpha for trusted operators and approved assets. It does not enforce operating-system isolation or defend against a caller who controls its process, database, job directories or FFmpeg executable. The initial agent permissions are those of the caller's local process. This is not yet suitable for unattended untrusted agents or public multi-tenant hosting.
+CohortFrame 0.2 is a local evaluation alpha for trusted operators and approved assets. It does not enforce operating-system isolation or defend against a caller who controls its process, database, job directories or FFmpeg executable. The initial agent permissions are those of the caller's local process. This is not yet suitable for unattended untrusted agents or public multi-tenant hosting.
 
 The application does not need provider credentials, expose an HTTP listener, run submitted scripts, execute HTML templates or call paid AI services. External rendering tools process local snapshots. Strict input validation and subprocess argument lists reduce particular classes of mistakes; they do not establish that a native decoder or the operating environment is invulnerable.
 
@@ -26,3 +26,8 @@ Production safeguards must be enforced outside the model. School admission, a ma
 
 Sensitive findings should go to the founder or the project's established private channel. Preserve a minimal reproduction using synthetic data. Do not place secrets or private customer material in issues, logs, examples or school learning records.
 
+
+
+## Browser composer
+
+The composer uses browser-local storage for drafts and never uploads briefs or audio. Clear saved drafts on shared devices. Treat browser storage as device-local convenience, not an encrypted backup. JSON imports are size-bounded and reject duplicate properties before schema validation. Scene text is inserted as text, never HTML. The hosted page is static; its hosting provider may process ordinary page requests. The offline copy does not need a network connection to compose or export.

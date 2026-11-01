@@ -7,6 +7,8 @@
 - `render.py`: bounded local scene rendering, explicit FFmpeg subprocess invocation, media validation and artifact provenance.
 - `font.py`: bundled project-authored bitmap glyphs, without a runtime font download.
 - `cli.py`: one JSON command interface and an original procedural demonstration.
+- `workflow.py`: read-only layout validation, exact PNG previews and offline composer export.
+- `studio/`: static browser editor producing v1 manifests. It does not operate the state store or render MP4s.
 
 The application has no HTTP listener or cloud SDK. Its caller already has local operating-system access. SQLite is the authoritative record; job input snapshots are copied before execution. The project dictionary returned to an agent is a representation, not a capability grant or a security token.
 
@@ -33,4 +35,5 @@ Abandoned-worker recovery uses POSIX process liveness and, on Linux, process-sta
 Future provider adapters should accept typed generation requests, bind authorization to an approved provider/destination, meter resources, preserve provider job identifiers and expose ambiguous outcomes. Their credentials belong outside model prompts and project files. Billing, secret custody and durable remote reconciliation require new reviewed implementations.
 
 Future UI and agent protocols should use the same project and job operations. An interface version change needs compatibility fixtures or an explicit migration. No school enrolment is required for an ordinary authorised product client.
+
 

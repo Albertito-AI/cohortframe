@@ -35,3 +35,13 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Inspect capabilities
         run: python -m cohortframe capabilities
+
+      - name: Check composer contract and JavaScript syntax
+        run: |
+          node --check src/cohortframe/studio/app.js
+          node --test tests/test_studio.cjs
+      - name: Verify packaged offline interface
+        run: |
+          cohortframe studio --output /tmp/cohortframe-studio
+          test -f /tmp/cohortframe-studio/index.html
+          cohortframe validate examples/intro.json

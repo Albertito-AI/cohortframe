@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "date": "2026-11-01",
+  "python_tests": {
+    "passed": 45,
+    "skipped": 0
+  },
+  "javascript_contract_tests": {
+    "passed": 7
+  },
+  "fresh_wheel_install": "passed",
+  "offline_export": "passed",
+  "browser_visual_qa": "blocked: browser runtime failed before page load",
+  "renders": {
+    "landscape": {
+      "audio_codec": "aac",
+      "bytes": 254512,
+      "duration": 12.0,
+      "format": "mp4",
+      "fps": 24,
+      "frame_count": 288,
+      "height": 720,
+      "path": "artifact.mp4",
+      "renderer": "cohortframe-bitmap-v1",
+      "requested_duration": 12.0,
+      "scene_count": 3,
+      "sha256": "f7a5af32a6ef0f80b96bc78391745a65f841ebe8ba9c653fdcc7c27226ff960a",
+      "validation": "ffprobe: codec, dimensions, frame count, frame rate, duration and audio",
+      "video_codec": "h264",
+      "width": 1280
+    },
+    "portrait": {
+      "audio_codec": "aac",
+      "bytes": 254149,
+      "duration": 12.0,
+      "format": "mp4",
+      "fps": 24,
+      "frame_count": 288,
+      "height": 1280,
+      "path": "artifact.mp4",
+      "renderer": "cohortframe-bitmap-v1",
+      "requested_duration": 12.0,
+      "scene_count": 3,
+      "sha256": "f8df03488673492d3248573f1a83aa10e4819fd4644946900f7bf3d97de9b638",
+      "validation": "ffprobe: codec, dimensions, frame count, frame rate, duration and audio",
+      "video_codec": "h264",
+      "width": 720
+    }
+  }
+}

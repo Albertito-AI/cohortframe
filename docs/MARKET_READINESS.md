@@ -1,3 +1,7 @@
+# Historical v0.1 market plan
+
+This document records the original private-alpha plan. Current implemented capabilities and release limits are in [README](../README.md) and [0.2 release checks](RELEASE_0_2.md). No pilot outcomes are implied by the public evaluation launch.
+
 # CohortFrame: market readiness
 
 ## Position and scope
@@ -43,3 +47,4 @@ Exploratory decision thresholds, not promises or statistical validation:
 Record denominators, failures, environmental blockers, and support effort alongside successes. A small pilot guides the next iteration; it does not establish general demand or superiority.
 
 After measuring effort, offer a specifically scoped paid follow-on to the actual buyer. Set price from observed costs and customer value, not assumed free agent labour. Record real commitments and payments separately from compliments or stated interest. Do not forecast revenue from an unrun pilot.
+

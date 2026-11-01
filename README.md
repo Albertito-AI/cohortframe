@@ -1,127 +1,119 @@
 # CohortFrame
 
-**Built by agents, for agents, with continuity across generations.**
+**A clear brief. A finished video. A record you can inspect.**
 
-**0.1.0 · Private development alpha**
+**0.2.0 · Evaluation alpha · Python 3.11+ · Local rendering**
 
-CohortFrame 0.1.0 is a local, agent-operated video composition alpha. Give it a structured scene brief and optional PCM WAV audio; it produces a real MP4 and an inspectable job record. The first version supplies a small working backbone for a future video and music studio.
+[**Open the visual composer**](https://cohortframe-studio.travelingbert.chatgpt.site) · [Get started](#quick-start) · [Release checks](docs/RELEASE_0_2.md) · [Known limits](#scope-and-limits)
 
-## See it in action
+CohortFrame turns structured title-card briefs into H.264 MP4 videos. Compose scenes in the browser or write JSON directly, preview the exact layouts, then render on your own machine with an optional PCM WAV soundtrack. Each render retains an inspectable job record, input snapshot and output hash.
 
-[![Silent preview of the actual CohortFrame release video: three title-card scenes rendered from a structured brief.](assets/demos/cohortframe-demo.gif)](https://github.com/Albertito-AI/cohortframe/releases/download/v0.1.0/cohortframe-0.1.0-demo-landscape.mp4)
+Use it for short announcements, research explainers, project updates and repeatable agent workflows. There are no connected generation providers, provider keys or paid API calls.
 
-**A structured brief becomes a finished video.** This is a silent preview of the actual 12-second release output, reduced to 4 frames per second for this page. Open the [landscape MP4 with audio](https://github.com/Albertito-AI/cohortframe/releases/download/v0.1.0/cohortframe-0.1.0-demo-landscape.mp4) or [portrait MP4](https://github.com/Albertito-AI/cohortframe/releases/download/v0.1.0/cohortframe-0.1.0-demo-portrait.mp4) to see the full 24 fps export.
+## What is new in 0.2
 
-| You provide | CohortFrame produces |
-| --- | --- |
-| Three title-card scenes and a local, original procedural WAV | A validated H.264/AAC MP4, a durable job record and an artifact hash |
+- **Visual composer:** three starter templates; landscape, portrait and square formats; scene editing, ordering and duplication; sequence playback; undo/redo; browser-local drafts; strict JSON import and export.
+- **Preflight:** `validate` checks the schema, frame-rounded duration and exact renderer layout before creating a job.
+- **Exact still previews:** `preview` exports PNG scene images without requiring FFmpeg.
+- **Offline interface:** `studio` exports the composer as ordinary HTML, CSS and JavaScript. Open `index.html` locally.
+- **Project discovery:** `project list` retrieves saved projects and their revisions.
+- **Better dependency inspection:** `doctor` checks for both required encoders, rather than reporting readiness merely because executables exist.
 
-After the [installation steps](#quick-start), reproduce the landscape example with:
-
-```sh
-cohortframe --home ./readme-demo demo
-```
-
-The command renders locally using FFmpeg. See the [preview provenance](docs/README_DEMO.md), [verified release results](docs/LAUNCH_VALIDATION.md) and [downloadable release](https://github.com/Albertito-AI/cohortframe/releases/tag/v0.1.0). The audio is a procedural fixture; this example does not call a music or video generation model.
-
-## Project status
-
-The working name combines student cohorts with the frames they create and maintain. See [the preliminary name review](docs/NAME_REVIEW.md). This release is a private development alpha for authorised local evaluation.
-
-The [dedicated product repository](https://github.com/Albertito-AI/cohortframe) is the canonical source, issue tracker and release home. CohortFrame is an Atlas Agent School community product under Albert Tan Sin Hon's stewardship. [Source provenance](docs/PROVENANCE.md) records its origin and transition into this dedicated repository.
-
-## What works in this version
-
-- A JSON command-line interface, capability discovery and dependency inspection.
-- Versioned title-card projects with optimistic revision checks.
-- SQLite project and job records, project-scoped idempotency keys and immutable input snapshots.
-- Explicit execution, cancellation, retry and interrupted-job recovery.
-- Local H.264 MP4 rendering through FFmpeg, with optional AAC-encoded audio from a local PCM WAV.
-- Artifact validation and content hashes.
-- A self-contained demonstration using original procedural audio.
-
-There is no live music or video generation provider, HTTP service, graphical timeline, billing system, marketplace or background maintenance service in this alpha. Its code is an original implementation, not an OpenFilm fork. School students have not yet taken over maintenance.
+CLI interface version 1, project schema version 1 and the SQLite schema remain unchanged. Existing project and job commands retain their semantics. The visual composer produces ordinary v1 briefs.
 
 ## Quick start
 
-Use Python 3.11 or later and a trusted FFmpeg installation providing both `ffmpeg` and `ffprobe`, with the `libx264` and AAC encoders. Only the documented validation environment has been tested; platform support must be established before public release.
+Download and extract the evaluation package from the [product page](https://cohortframe-studio.travelingbert.chatgpt.site#get-started). Use Python 3.11 or later and a trusted [FFmpeg installation](https://ffmpeg.org/download.html) with `ffmpeg`, `ffprobe`, `libx264` and AAC support. FFmpeg is installed separately.
 
-From this directory, in the tested POSIX shell environment:
+In a POSIX shell, from the extracted project directory:
 
 ```sh
 python -m venv .venv
 . .venv/bin/activate
 python -m pip install .
-cohortframe capabilities
 cohortframe doctor
 cohortframe --home ./demo-output demo
 ```
 
-The final command creates a project, synthesises an original 12-second audio fixture and renders a demonstration. Its JSON result includes the job and output artifact. Use a different `--home` directory for a separate local workspace. The global `--home` option goes before the command.
+The demonstration produces a real 12-second MP4 with original procedural audio. It does not call a music or video generation model. Local execution and storage still consume your own resources. This release was verified on Linux with Python 3.12 and FFmpeg 7.1.5; other platforms have not been verified for this release.
 
-If the executable is not on your PATH, use `python -m cohortframe` in its place. Alternatively, download the wheel from [Releases](https://github.com/Albertito-AI/cohortframe/releases), then install the downloaded file:
-
-```sh
-python -m pip install --no-deps ./cohortframe-0.1.0-py3-none-any.whl
-```
-
-The wheel is a separate release asset; GitHub's automatic source archives do not include it. No provider key or online account is needed to run the program. FFmpeg itself is not included in this package.
-
-### Render your own brief
+A wheel is also available on the product page:
 
 ```sh
-cohortframe --home ./demo-output project create examples/intro.json
-cohortframe --home ./demo-output project show PROJECT_ID
-cohortframe --home ./demo-output job submit PROJECT_ID --expected-revision 1 --key first-export --run
-cohortframe --home ./demo-output job show JOB_ID
+python -m pip install --no-deps cohortframe-0.2.0-py3-none-any.whl
 ```
 
-Replace `PROJECT_ID` and `JOB_ID` with the returned identifiers. `examples/intro.json` is a valid silent two-scene brief. For audio, add an `audio` field naming an approved local PCM WAV file, relative to the brief's directory or as an explicit absolute path.
+If the command is not on your PATH, use `python -m cohortframe`. The global `--home` option goes **before** the command.
 
-To update a project, supply the complete revised brief and its current revision:
+## Compose, preview, render
+
+1. Use the [visual composer](https://cohortframe-studio.travelingbert.chatgpt.site#composer), then download `cohortframe-project.json`. The browser preview is illustrative. No brief or audio is uploaded by the composer.
+2. Check the exact layout locally:
 
 ```sh
-cohortframe --home ./demo-output project update PROJECT_ID revised.json --expected-revision 1
+cohortframe validate cohortframe-project.json
+cohortframe preview cohortframe-project.json --output frames
 ```
 
-A stale revision is rejected. Previously submitted jobs retain their snapshots.
+Open the PNGs in `frames/`. Output directories must be new; existing work is never replaced. Preflight checks scene layouts and timing. Audio is checked when creating the project and copied when submitting a job.
 
-### Durable jobs
-
-Omit `--run` to queue a job, then execute it explicitly:
+3. Create a project and render it:
 
 ```sh
-cohortframe --home ./demo-output job run JOB_ID
-cohortframe --home ./demo-output job list
-cohortframe --home ./demo-output job cancel JOB_ID
-cohortframe --home ./demo-output job recover
-cohortframe --home ./demo-output job retry JOB_ID --run
+cohortframe project create cohortframe-project.json
+cohortframe project list
+cohortframe job submit PROJECT_ID --expected-revision 1 --key first-export --run
+cohortframe job show JOB_ID
 ```
 
-There is no resident worker. A queued job runs when `job run` is invoked. Cancellation and recovery report actual state; a cancelled or interrupted run is not a successful export. Consult [architecture and state semantics](docs/ARCHITECTURE.md) before automating retries.
+Replace the identifiers with those returned by the commands. The MP4 is at `snapshot_dir` plus `result.path` in the returned job. For example, a successful job's artifact is normally `<home>/jobs/<JOB_ID>/artifact.mp4`. A `succeeded` job includes validated media properties and a SHA-256 hash.
 
-Automatic abandoned-worker recovery is currently supported for the tested POSIX environment. Non-POSIX platforms conservatively retain recorded workers and need an additional recovery implementation before production support.
+For audio, put your approved PCM WAV next to the JSON brief and use its filename in `audio`, or provide an approved absolute path on the rendering machine. An audio path entered in the browser does not upload or validate the file.
 
-## Interface contract
-
-Commands return one JSON document on stdout. A successful command has `ok: true`, `interface_version: "1"` and a `result`. A failed operation has `ok: false` and a stable error category. Exit status is 0 for a successful command, 2 for an invalid request or state conflict, 3 for a local operation error, and 4 when an executed job finishes without a successful artifact. Human help/version output are explicit exceptions to the JSON response contract.
-
-Current limits include 60 seconds per project, 12 title-card scenes, even dimensions up to 1920 pixels, and up to 30 frames per second. Display text uses the bundled bitmap font and printable ASCII; unsupported text must not be silently replaced. Layout is deliberately simple in v0.1. See `capabilities` and validation errors for the operational limits.
-
-## Trust boundary
-
-This is a **trusted local alpha**, intended for the founder and authorised developers using approved local assets. It has no operating-system sandbox and is not a security certification. Do not expose it as a multi-tenant service or let an untrusted agent control the host, database or state directory. See [security and limitations](docs/SECURITY.md).
-
-The product's future standards include bounded permissions, protected credentials, visible provider calls and costs, and trustworthy releases. Features that have not been implemented are recorded as future work, rather than advertised as current protection.
-
-## Develop, verify and hand over
+For an entirely offline composer:
 
 ```sh
-python -m unittest discover -s tests -v
+cohortframe studio --output my-studio
 ```
 
-Install the package before running this command, or set `PYTHONPATH=src` in a development shell. Integration tests require FFmpeg and ffprobe. [Validation](docs/VALIDATION.md) records what was actually exercised. [Succession](docs/SUCCESSION.md) defines what an incoming qualified Atlas cohort must reproduce before receiving responsibility. [Market readiness](docs/MARKET_READINESS.md) separates this alpha from a public offer.
+Open `my-studio/index.html`. Browser storage can be unavailable for local files or restricted browsing; downloading the brief is the portable way to retain work. Use **Clear saved draft** on shared devices.
 
-The first maintainer is the authorised founder-directed development workflow. Approved Atlas agents can inherit defined responsibilities after the school's applicable gates are met. No enrolment or autonomous maintenance service is created by installing this package.
+## Agent interface and durable jobs
 
-See [distribution and provenance](NOTICE.md) before redistribution.
+Commands return one JSON document on stdout, with `ok`, `interface_version: "1"` and either `result` or a structured error. Help and version output are explicit exceptions. Exit codes: `0` success; `2` invalid request or state conflict; `3` local operation error; `4` an executed or inspected job in failed, interrupted or cancelled state. `doctor` itself can succeed while reporting `ready: false`; inspect that field before rendering.
+
+```sh
+cohortframe capabilities
+cohortframe project update PROJECT_ID revised.json --expected-revision 1
+cohortframe job submit PROJECT_ID --expected-revision 2 --key second-export
+cohortframe job run JOB_ID
+cohortframe job list
+cohortframe job cancel JOB_ID
+cohortframe job recover
+cohortframe job retry JOB_ID --run
+```
+
+Stale edits fail. Submitted jobs retain their original inputs. Idempotency keys are project-scoped; a conflicting revision cannot silently reuse the same key. Queued work runs only on explicit invocation. Cancellation requests are observed during execution. Recovery detects abandoned POSIX workers. See [architecture](docs/ARCHITECTURE.md) before automating retries.
+
+## Scope and limits
+
+- 1 to 12 title-card scenes, up to 60 seconds including frame rounding.
+- Even dimensions from 16 to 1920 pixels and 1 to 30 fps. Very small dimensions or dense text may fail layout validation.
+- Printable ASCII text, displayed using the bundled uppercase bitmap font. No Unicode text shaping or custom fonts.
+- Local PCM WAV audio, bounded to 32 MiB and 120 seconds. No footage import, transitions, timeline trimming or AI-generated media.
+- Trusted local use. No OS sandbox, hosted renderer, multi-tenant service, billing, marketplace or security certification.
+- Windows abandoned-worker recovery is not supported. Linux is the tested release environment.
+- Browser responsive styles and interaction logic are included. Desktop/mobile visual browser QA was blocked by the execution environment for this release; it is not claimed as completed.
+
+## Verification and contribution
+
+```sh
+PYTHONPATH=src python -m unittest discover -s tests -v
+node --test tests/test_studio.cjs
+```
+
+FFmpeg integration tests run when media tools are installed. [Release evidence](docs/RELEASE_0_2.md) records observed results, installation checks, output properties and verification gaps. Historical v0.1 evidence is retained and labelled by version.
+
+CohortFrame is an Atlas Agent School community project under Albert Tan Sin Hon's stewardship. Future qualified cohort participation is planned, not a claim of current student operation. [Succession](docs/SUCCESSION.md) describes a separate qualification and handover process.
+
+For adaptations or evaluation feedback, use [Albert Tan's website](https://www.alberttansinhon.com/). Public source availability is not an open-source licence. See [distribution terms and provenance](NOTICE.md), [security boundaries](docs/SECURITY.md) and [source provenance](docs/PROVENANCE.md).

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "name": "Project update",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "scenes": [
+    {
+      "id": "done",
+      "title": "WHAT CHANGED",
+      "subtitle": "Describe the work completed.",
+      "color": "#52775c",
+      "duration": 4
+    },
+    {
+      "id": "checked",
+      "title": "WHAT WE CHECKED",
+      "subtitle": "Report the verification and its limits.",
+      "color": "#465c87",
+      "duration": 4
+    },
+    {
+      "id": "next",
+      "title": "WHAT COMES NEXT",
+      "subtitle": "Name the next useful step.",
+      "color": "#bc4d2c",
+      "duration": 4
+    }
+  ]
+}

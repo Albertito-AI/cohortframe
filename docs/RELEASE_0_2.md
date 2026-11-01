@@ -1,0 +1,39 @@
+# CohortFrame 0.2.0 release checks
+
+Date: 1 November 2026. Scope: local evaluation alpha and browser-based brief composer.
+
+## Compatibility
+
+The CLI envelope remains interface version 1. Project manifests and job snapshots remain version 1. There is no database migration. All 37 prior regression tests were retained. New commands are additive: `validate`, `preview`, `studio`, and `project list`. `doctor.ready` now requires detected libx264 and AAC encoders; callers that formerly relied on a false-positive readiness result will receive `false`.
+
+The composer is a static client. It has no rendering server, upload endpoint, authentication flow or paid-provider integration. Its preview is illustrative; the Python renderer creates exact still previews and final video.
+
+## Reproducible checks
+
+```sh
+PYTHONPATH=src python -m unittest discover -s tests -v
+node --test tests/test_studio.cjs
+python -m pip wheel --no-deps --no-build-isolation . -w dist
+cohortframe doctor
+cohortframe validate examples/intro.json
+cohortframe preview examples/intro.json --output frames
+cohortframe --home demo-output demo
+```
+
+Observed: 45 Python tests pass, including real FFmpeg tests, state recovery, immutable snapshots, cancellation, revision conflicts, malformed inputs and the new workflow operations. Seven JavaScript contract tests pass, covering templates, import ambiguity, unsupported values, rounding limits, reordering, defaults and bounded input size. The test run contains no skipped Python tests in the release environment.
+
+Exact 1280 × 720 PNG previews were generated and visually inspected. A 12-second 1280 × 720 MP4 was rendered: H.264, 24 fps, 288 frames, AAC audio, 254,512 bytes. SHA-256: `f7a5af32a6ef0f80b96bc78391745a65f841ebe8ba9c653fdcc7c27226ff960a`. This is the procedural `demo` fixture, not a customer result or generated footage.
+
+Environment: Linux, Python 3.12.14, FFmpeg/ffprobe 7.1.5, Node 24.22.1. Other operating systems and dependency builds are not verified here. Media hashes can differ across encoder versions.
+
+## Verification boundaries
+
+The available browser runtime failed to start with an environment filesystem error before loading a page. Desktop/mobile visual QA and real browser end-to-end interaction testing are therefore unverified. Responsive CSS, semantic controls, focus styles, labels, reduced-motion handling and a text alternative for the canvas were implemented; this is not an accessibility certification.
+
+No independent incoming-cohort succession exercise was performed. Existing succession requirements remain in force before maintenance responsibility is transferred. No customer pilot, conversion measurement, security audit or paid market validation is claimed.
+
+Publication status must be read from the live deployment and repository visibility, separately from these functional checks. A public product page does not itself make the GitHub repository public.
+
+## Fresh installation and portrait output
+
+The built wheel was installed in a new virtual environment using `pip install --no-index --no-deps`. The installed `studio` command exported all five offline interface assets. The installed `demo --width 720 --height 1280` produced a second successful 12-second, 288-frame H.264/AAC MP4 (254,149 bytes), SHA-256 `f8df03488673492d3248573f1a83aa10e4819fd4644946900f7bf3d97de9b638`. All three browser starter templates were exported to examples and passed Python schema, frame-duration and exact-layout preflight.

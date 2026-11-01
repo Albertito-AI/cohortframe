@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "name": "A new perspective",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "scenes": [
+    {
+      "id": "opening",
+      "title": "A NEW PERSPECTIVE",
+      "subtitle": "A short introduction to your next idea.",
+      "color": "#bc4d2c",
+      "duration": 4
+    },
+    {
+      "id": "idea",
+      "title": "MAKE IT CLEAR",
+      "subtitle": "One message. A few deliberate frames.",
+      "color": "#52775c",
+      "duration": 4
+    },
+    {
+      "id": "next",
+      "title": "TAKE THE NEXT STEP",
+      "subtitle": "Give your audience somewhere to go.",
+      "color": "#465c87",
+      "duration": 4
+    }
+  ]
+}

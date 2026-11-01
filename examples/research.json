@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "name": "Research in focus",
+  "width": 1280,
+  "height": 720,
+  "fps": 24,
+  "scenes": [
+    {
+      "id": "question",
+      "title": "START WITH A QUESTION",
+      "subtitle": "What does your research ask?",
+      "color": "#465c87",
+      "duration": 4
+    },
+    {
+      "id": "evidence",
+      "title": "SHOW THE EVIDENCE",
+      "subtitle": "Summarise your finding and its source.",
+      "color": "#52775c",
+      "duration": 4
+    },
+    {
+      "id": "limits",
+      "title": "KEEP THE LIMITS VISIBLE",
+      "subtitle": "State what the evidence does not establish.",
+      "color": "#bc4d2c",
+      "duration": 4
+    }
+  ]
+}

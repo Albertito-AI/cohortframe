@@ -18,6 +18,7 @@ import wave
 from . import __version__
 from .core import Store
 from .models import CohortFrameError, MAX_JSON_BYTES, ValidationError, parse_json
+from .workflow import preflight, preview, export_studio
 from .render import render
 
 
@@ -36,7 +37,7 @@ def capabilities():
         "interface_version": "1", "project_schema_version": 1,
         "operations": ["project.create", "project.show", "project.update", "job.submit",
                        "job.run", "job.show", "job.list", "job.cancel", "job.retry",
-                       "job.recover", "demo", "doctor"],
+                       "job.recover", "project.list", "validate", "preview", "studio", "demo", "doctor"],
         "render": {"format": "mp4", "video_codec": "h264", "audio_codec": "aac",
                    "scene_type": "title_card", "audio_input": "local_pcm_wav",
                    "max_duration_seconds": 60, "max_scenes": 12,
@@ -66,7 +67,17 @@ def doctor():
                 item["available"] = False
                 item["error"] = type(exc).__name__
         tools[name] = item
-    return {"ready": all(item["available"] for item in tools.values()),
+    encoders = {"libx264": False, "aac": False}
+    if tools["ffmpeg"]["available"]:
+        try:
+            output = subprocess.run([tools["ffmpeg"]["path"], "-hide_banner", "-encoders"],
+                                    capture_output=True, text=True, timeout=10, check=False)
+            names = {line.split()[1] for line in output.stdout.splitlines() if len(line.split()) >= 2}
+            encoders = {name: output.returncode == 0 and name in names for name in encoders}
+        except (OSError, subprocess.SubprocessError):
+            pass
+    return {"ready": all(item["available"] for item in tools.values()) and all(encoders.values()),
+            "encoders": encoders,
             "python": sys.version.split()[0], "tools": tools,
             "note": "Rendering requires a trusted FFmpeg build with libx264 and AAC support."}
 
@@ -113,10 +124,17 @@ def parser():
     sub = p.add_subparsers(dest="command", required=True)
     sub.add_parser("capabilities")
     sub.add_parser("doctor")
+    sub.add_parser("validate", help="Check schema and exact title-card layout without creating a job").add_argument("file")
+    preview_cmd = sub.add_parser("preview", help="Write exact PNG scene previews without FFmpeg")
+    preview_cmd.add_argument("file")
+    preview_cmd.add_argument("--output", required=True, help="New output directory; existing directories are never replaced")
+    studio = sub.add_parser("studio", help="Export the offline visual scene composer")
+    studio.add_argument("--output", required=True, help="New directory for the offline composer")
     demo = sub.add_parser("demo", help="Render an original 12-second local demonstration")
     demo.add_argument("--width", type=int, default=1280)
     demo.add_argument("--height", type=int, default=720)
     project = sub.add_parser("project").add_subparsers(dest="action", required=True)
+    project.add_parser("list")
     project.add_parser("create").add_argument("file")
     project.add_parser("show").add_argument("id")
     update = project.add_parser("update")
@@ -144,8 +162,15 @@ def dispatch(args):
         return capabilities()
     if args.command == "doctor":
         return doctor()
+    if args.command in ("validate", "preview"):
+        manifest, base = read_manifest(args.file)
+        return preflight(manifest) if args.command == "validate" else preview(manifest, Path(args.output).expanduser())
+    if args.command == "studio":
+        return export_studio(Path(args.output).expanduser())
     store = Store(Path(args.home).expanduser())
     if args.command == "project":
+        if args.action == "list":
+            return store.list_projects()
         if args.action == "show":
             return store.get_project(args.id)
         manifest, base = read_manifest(args.file)
@@ -158,7 +183,7 @@ def dispatch(args):
         audio = location / (uuid.uuid4().hex + ".wav")
         demo_audio(audio)
         project = store.create_project({
-            "version": 1, "name": "CohortFrame 0.1 demonstration",
+            "version": 1, "name": "CohortFrame 0.2 demonstration",
             "width": args.width, "height": args.height, "fps": 24,
             "audio": str(audio),
             "scenes": [
@@ -214,4 +239,5 @@ def main(argv=None):
         print(json.dumps({"ok": False, "interface_version": "1", "error": {
             "code": "local_operation_failed", "message": str(exc)}}))
         return 3
+
 

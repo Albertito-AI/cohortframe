@@ -1,5 +1,27 @@
 # CohortFrame 0.2.0 release checks
 
+## Source and tagged-release distinction, 11 November 2026
+
+The current source identifies itself as 0.2.0, while the most recent GitHub tag
+and release is v0.1.0. The historical checks below describe the 0.2.0 source and
+locally prepared package; they do not establish a tagged 0.2.0 GitHub release.
+The README now installs from the current repository and gives a local wheel-build
+command, avoiding an assumption that the older release includes the composer.
+
+The 11 November recheck ran all 45 Python and seven JavaScript contract tests
+successfully on Linux with Python 3.12.14 and Node 24.22.1, including real FFmpeg
+rendering, cancellation and recovery. Local Chromium failed before page load
+because the environment prohibited a required socket operation. It was not
+counted as a visual pass. The existing CI now exports the installed composer and
+runs `tests/browser_acceptance.cjs` against it with pinned Playwright 1.64.1.
+That test exercises desktop/mobile editing, import/export, draft persistence,
+playback and layout bounds, and retains screenshots and machine-readable evidence.
+Inspect the successful run for the exact revision before claiming browser
+acceptance; a prepared test alone does not establish it. No release is created
+by this workflow.
+
+## Original 0.2.0 preparation record
+
 Date: 1 November 2026. Scope: local evaluation alpha and browser-based brief composer.
 
 ## Compatibility

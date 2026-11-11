@@ -91,6 +91,8 @@ async function main() {
         console.error(JSON.stringify(layout, null, 2));
       }
       assert.equal(overflow, false, name + ' page must not overflow horizontally');
+      const timelineOverlapsNote = await page.evaluate(() => Math.max(...[...document.querySelectorAll('#timeline button')].map(button => button.getBoundingClientRect().bottom)) > document.querySelector('.preview-note').getBoundingClientRect().top);
+      assert.equal(timelineOverlapsNote, false, name + ' timeline controls must not overlap the preview note');
       await page.locator('#composer').scrollIntoViewIfNeeded();
       await page.screenshot({ path: path.join(output, name + '-full.png'), fullPage: true });
       await page.locator('#preview').scrollIntoViewIfNeeded();
@@ -101,7 +103,7 @@ async function main() {
       assert.notEqual(await page.locator('#name').inputValue(), brief.name);
       assert.deepEqual(errors, [], 'No browser execution errors');
       assert.deepEqual(remoteRequests, [], 'Composer must not contact external services');
-      results.push({ viewport: name, width, height, passed: true, exportedBrief: path.basename(briefPath), checks: ['editing', 'duplicate/reorder', 'undo/redo', 'unsupported text rejected', 'format change', 'JSON download', 'duplicate-key import rejected', 'draft reload', 'sequence playback', 'valid import', 'no horizontal overflow', 'draft clear', 'no page errors', 'no external requests'] });
+      results.push({ viewport: name, width, height, passed: true, exportedBrief: path.basename(briefPath), checks: ['editing', 'duplicate/reorder', 'undo/redo', 'unsupported text rejected', 'format change', 'JSON download', 'duplicate-key import rejected', 'draft reload', 'sequence playback', 'valid import', 'no horizontal overflow', 'no timeline overlap', 'draft clear', 'no page errors', 'no external requests'] });
       await context.close();
     }
     const evidence = { browser: await browser.version(), sourceRevision: process.env.GITHUB_SHA || null, results, scope: 'Scripted Chromium acceptance of the installed offline composer; not independent user, accessibility, or live-site validation.' };

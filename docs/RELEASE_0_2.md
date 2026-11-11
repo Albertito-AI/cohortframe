@@ -16,9 +16,28 @@ counted as a visual pass. The existing CI now exports the installed composer and
 runs `tests/browser_acceptance.cjs` against it with pinned Playwright 1.64.1.
 That test exercises desktop/mobile editing, import/export, draft persistence,
 playback and layout bounds, and retains screenshots and machine-readable evidence.
-Inspect the successful run for the exact revision before claiming browser
-acceptance; a prepared test alone does not establish it. No release is created
-by this workflow.
+No release is created by this workflow.
+
+### Observed browser acceptance
+
+[Run 42971883717](https://github.com/Albertito-AI/cohortframe/actions/runs/42971883717)
+passed for pull-request head `83cda056c290a1a2d3216198daa54c620ac2def9`.
+The checked-out integration revision recorded by the test was
+`0f763b514894d04a733578c1c30bd488fd5ad9bb`. Chromium 156.0.8078.4
+completed both 1440 × 1000 desktop and 390 × 844 mobile acceptance. Both
+browser-downloaded briefs also passed the installed Python validator. The
+artifact ZIP SHA-256 was
+`34f02eaf50659819e4ba123b52c89aae28693d381e7216d16aa7ff03d1d5a440`;
+desktop and mobile screenshots were downloaded, hash checked and visually
+inspected. The final mobile scene strip stays within the workspace, and its
+timeline controls no longer overlap the preview note.
+
+The initial [diagnostic run 42971082631](https://github.com/Albertito-AI/cohortframe/actions/runs/42971082631)
+failed because a 616 px scene panel expanded a 390 px page. Its retained layout
+JSON and screenshot established the defect before the CSS correction. A later
+screenshot review found the timeline overlap and added a separate regression
+assertion. This is real scripted browser evidence for the installed package,
+not independent user testing, accessibility certification or live-site QA.
 
 ## Original 0.2.0 preparation record
 

@@ -112,7 +112,7 @@ Stale edits fail. Submitted jobs retain their original inputs. Idempotency keys 
 - Local PCM WAV audio, bounded to 32 MiB and 120 seconds. No footage import, transitions, timeline trimming or AI-generated media.
 - Trusted local use. No OS sandbox, hosted renderer, multi-tenant service, billing, marketplace or security certification.
 - Windows abandoned-worker recovery is not supported. Linux is the tested release environment.
-- Browser responsive styles and interaction logic are included. Desktop/mobile visual browser QA was blocked by the execution environment for this release; it is not claimed as completed.
+- Scripted Chromium acceptance passed on desktop and mobile on 11 November 2026, including exported briefs, draft persistence, playback and layout checks. Screenshots were inspected after fixing mobile grid overflow and timeline overlap. See [the dated receipt](docs/RELEASE_0_2.md); independent-user, accessibility and live-site validation remain separate.
 
 ## Verification and contribution
 

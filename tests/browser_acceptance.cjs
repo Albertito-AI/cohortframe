@@ -84,6 +84,12 @@ async function main() {
       await page.waitForFunction(() => document.getElementById('feedback').textContent.startsWith('Brief imported.'));
       assert.equal(await page.locator('#title').inputValue(), 'SECOND CHECK');
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+      if (overflow) {
+        const layout = await page.evaluate(() => [...document.querySelectorAll('body *')].map(element => ({ tag: element.tagName, id: element.id, className: typeof element.className === 'string' ? element.className : '', left: element.getBoundingClientRect().left, right: element.getBoundingClientRect().right, width: element.getBoundingClientRect().width })).filter(box => box.right > innerWidth + 1 || box.left < -1));
+        await fs.writeFile(path.join(output, name + '-overflow.json'), JSON.stringify(layout, null, 2));
+        await page.screenshot({ path: path.join(output, name + '-overflow.png'), fullPage: true });
+        console.error(JSON.stringify(layout, null, 2));
+      }
       assert.equal(overflow, false, name + ' page must not overflow horizontally');
       await page.locator('#composer').scrollIntoViewIfNeeded();
       await page.screenshot({ path: path.join(output, name + '-full.png'), fullPage: true });

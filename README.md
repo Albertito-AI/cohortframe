@@ -4,6 +4,11 @@
 
 **0.2.0 · Evaluation alpha · Python 3.11+ · Local rendering**
 
+The current source is version 0.2.0. The latest GitHub tagged release is
+[v0.1.0](https://github.com/Albertito-AI/cohortframe/releases/tag/v0.1.0), which
+predates the visual composer. Use the current source for the commands and
+composer described below; the old release wheel retains its original scope.
+
 [**Open the visual composer**](https://cohortframe-studio.travelingbert.chatgpt.site) · [Get started](#quick-start) · [Release checks](docs/RELEASE_0_2.md) · [Known limits](#scope-and-limits)
 
 CohortFrame turns structured title-card briefs into H.264 MP4 videos. Compose scenes in the browser or write JSON directly, preview the exact layouts, then render on your own machine with an optional PCM WAV soundtrack. Each render retains an inspectable job record, input snapshot and output hash.
@@ -23,7 +28,10 @@ CLI interface version 1, project schema version 1 and the SQLite schema remain u
 
 ## Quick start
 
-Download and extract the evaluation package from the [product page](https://cohortframe-studio.travelingbert.chatgpt.site#get-started). Use Python 3.11 or later and a trusted [FFmpeg installation](https://ffmpeg.org/download.html) with `ffmpeg`, `ffprobe`, `libx264` and AAC support. FFmpeg is installed separately.
+Download the current source through this repository's **Code → Download ZIP**
+control, or clone the repository. Use Python 3.11 or later and a trusted
+[FFmpeg installation](https://ffmpeg.org/download.html) with `ffmpeg`, `ffprobe`,
+`libx264` and AAC support. FFmpeg is installed separately.
 
 In a POSIX shell, from the extracted project directory:
 
@@ -37,10 +45,11 @@ cohortframe --home ./demo-output demo
 
 The demonstration produces a real 12-second MP4 with original procedural audio. It does not call a music or video generation model. Local execution and storage still consume your own resources. This release was verified on Linux with Python 3.12 and FFmpeg 7.1.5; other platforms have not been verified for this release.
 
-A wheel is also available on the product page:
+To build an installable wheel from the same inspected checkout:
 
 ```sh
-python -m pip install --no-deps cohortframe-0.2.0-py3-none-any.whl
+python -m pip wheel --no-deps . --wheel-dir dist
+python -m pip install --no-deps dist/cohortframe-0.2.0-py3-none-any.whl
 ```
 
 If the command is not on your PATH, use `python -m cohortframe`. The global `--home` option goes **before** the command.
@@ -103,7 +112,7 @@ Stale edits fail. Submitted jobs retain their original inputs. Idempotency keys 
 - Local PCM WAV audio, bounded to 32 MiB and 120 seconds. No footage import, transitions, timeline trimming or AI-generated media.
 - Trusted local use. No OS sandbox, hosted renderer, multi-tenant service, billing, marketplace or security certification.
 - Windows abandoned-worker recovery is not supported. Linux is the tested release environment.
-- Browser responsive styles and interaction logic are included. Desktop/mobile visual browser QA was blocked by the execution environment for this release; it is not claimed as completed.
+- Scripted Chromium acceptance passed on desktop and mobile on 11 November 2026, including exported briefs, draft persistence, playback and layout checks. Screenshots were inspected after fixing mobile grid overflow and timeline overlap. See [the dated receipt](docs/RELEASE_0_2.md); independent-user, accessibility and live-site validation remain separate.
 
 ## Verification and contribution
 

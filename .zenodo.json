@@ -1,0 +1,19 @@
+{
+  "title": "CohortFrame",
+  "description": "Agent-operated local video composition with versioned projects, inspectable render jobs and continuity across Atlas cohorts. Private development alpha. This record preserves a dated source snapshot of the public repository. It describes the existing project and does not assert independent validation, peer review or production readiness.",
+  "creators": [
+    {
+      "name": "Tan, Sin Hon Albert",
+      "orcid": "0009-0001-8996-7933"
+    }
+  ],
+  "upload_type": "software",
+  "access_right": "closed",
+  "notes": "The Zenodo archive files are closed to preserve the repository's existing reserved or mixed rights. No new general reuse licence is granted. The source repository remains available at its existing URL under its own terms. Third-party works retain their authorship and rights. This DOI identifies this repository snapshot, not any separately published book, article or linked project.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Albertito-AI/cohortframe",
+      "relation": "isSupplementTo"
+    }
+  ]
+}

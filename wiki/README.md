@@ -7,10 +7,18 @@ rights and visibility remain unchanged.
 
 ## Publication state
 
-At preparation, the Wiki had not been verified as initialised. A committed file
-is not proof that a Wiki page is live. GitHub requires a first Wiki page before
-ordinary Git publication: [create that page](https://github.com/Albertito-AI/cohortframe/wiki/_new).
-Use the title `Home`, add a short welcome and save.
+On 15 November 2026, an anonymous read of the live Wiki found HEAD
+`2dfbbb5f472e18153493d4c7bfaba5a49372c15b`. Its managed `Whitepaper.md`
+matched the committed publication source at
+[`8d3845dbe0a451329f40fe55aabdb824ef9fbe97`](https://github.com/Albertito-AI/cohortframe/blob/8d3845dbe0a451329f40fe55aabdb824ef9fbe97/wiki/Whitepaper.md)
+byte for byte. The managed Home section also matched. This is a dated baseline
+observation, not proof that a later source revision has been published.
+
+After every source update, inspect the publisher result and read back the live
+page against the accepted source. If a future Wiki is absent or must be rebuilt,
+GitHub requires a first page before ordinary Git publication; the
+[documented initialisation procedure](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages)
+is a recovery instruction, not the current publication state.
 
 The `Publish project whitepaper to Wiki` workflow runs after that initial Wiki
 edit and after later source changes. It uses the repository-scoped workflow token.

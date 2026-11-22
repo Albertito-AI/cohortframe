@@ -19,4 +19,4 @@ jobs:
       actions: write
       issues: write
 # Cross-repository smoke test: the shared monitor must expose checkout and incident-reporting failures.
-    uses: Albertito-AI/Albertito-AI/.github/workflows/atlas-flexible-zero-fail.yml@main
+    uses: Albertito-AI/Albertito-AI/.github/workflows/atlas-flexible-zero-fail.yml@2e849a36fd6a2b93d1a968efd4fcccdb7523132b

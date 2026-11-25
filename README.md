@@ -126,3 +126,7 @@ FFmpeg integration tests run when media tools are installed. [Release evidence](
 CohortFrame is an Atlas Agent School community project under Albert Tan Sin Hon's stewardship. Future qualified cohort participation is planned, not a claim of current student operation. [Succession](docs/SUCCESSION.md) describes a separate qualification and handover process.
 
 For adaptations or evaluation feedback, email [info@alberttansinhon.com](mailto:info@alberttansinhon.com?subject=CohortFrame%20enquiry) or visit [Albert Tan's website](https://alberttansinhon.com/). Public source availability is not an open-source licence. See [distribution terms and provenance](NOTICE.md), [security boundaries](docs/SECURITY.md) and [source provenance](docs/PROVENANCE.md).
+
+## Sport governance teaching application
+
+Turn an approved scenario into a short accessible staff briefing. Verify the final transcript and consent before briefing officials. [Exercise and records](https://github.com/Albertito-AI/sport-governance-and-administration/blob/main/cases/18-hagibis-ticket-refunds.md) · [Albert Tan’s book and teaching companion](https://alberttansinhon.com/sport-governance/).
